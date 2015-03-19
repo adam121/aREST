@@ -47,13 +47,16 @@ void setup(void)
   Serial.begin(115200);
   
   // Init variables and expose them to REST API
-  temperature = 24;
-  humidity = 40;
-  rest.variable("temperature",&temperature);
-  rest.variable("humidity",&humidity);
+  // temperature = 24;
+  // humidity = 40;
+  // rest.variable("temperature",&temperature);
+  // rest.variable("humidity",&humidity);
 
   // Function to be exposed
-  rest.function("led",ledControl);
+  //rest.function("led",ledControl);
+  
+  //SETTINGS DECLARED
+  rest.function("settings",settings);
   
   // Give name and ID to device
   rest.set_id("008");
@@ -129,12 +132,33 @@ bool displayConnectionDetails(void)
   }
 }
 
-// Custom function accessible by the API
+// SETTINGS FUNCTION
 int ledControl(String command) {
+	
+  Serial.println(F("COMMAND TEST:\r\n"));
+  Serial.println(F(command));
+  Serial.println();
+  
+  
+  // VARIABLE SEPARATION - NOT TESTED
+  // char *ch;
+  // ch = strtok(command, "/");
+  // while (ch != NULL) {
+	// Serial.print(F("\n")); ch;
+	// ch = strtok(NULL, " ,");
+	// Serial.println();
+  // }
+  
+  return 1;
+}
+
+
+// Custom function accessible by the API
+/* int ledControl(String command) {
   
   // Get state from command
   int state = command.toInt();
   
   digitalWrite(6,state);
   return 1;
-}
+} */
