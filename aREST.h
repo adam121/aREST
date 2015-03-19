@@ -311,12 +311,6 @@ void process(char c){
 
       if (DEBUG_MODE) {Serial.println(answer);}
       
-      if (command == 's' && pin_selected && state == 'u') {
-        Serial.println("SETTINGS ARE HERE:");
-         Serial.println(answer);
-         Serial.println(":SETTINGS END HERE");
-      }
-      
       // If the command is mode, and the pin is already selected    
       if (command == 'm' && pin_selected && state == 'u') {
         
@@ -391,9 +385,7 @@ void process(char c){
      
      // Digital command received ?    
      if (answer.startsWith("digital")) {command = 'd';}
-     
-     if (answer.startsWith("settings")) {command = 's';}
-          
+
      // Mode command received ?
      if (answer.startsWith("mode")) {command = 'm';}
           
